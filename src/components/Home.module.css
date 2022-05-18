@@ -225,8 +225,6 @@ body {
 .slider {
   position: relative;
   /* border: 1px solid violet; */
-  /* position: absolute; */
-  /* top: 0; */
 }
 
 section.slider .slide {

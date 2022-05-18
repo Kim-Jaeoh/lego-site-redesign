@@ -1,23 +1,28 @@
 import { MenuOutlined, SearchOutlined } from "@ant-design/icons";
 import { Swiper, SwiperSlide } from "swiper/react"; // basic
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/css"; //basic
+import "swiper/scss"; //basic
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
+import "swiper/scss/pagination";
+import "swiper/scss/autoplay";
 import styled from "./Home.module.css";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import Modal from "./Modal";
-import SignUp from "./SignUp";
+import Modal from "./LoginModal";
+import SignUp from "./SignUpModal";
 import { AuthContext } from "../context/authContext";
 import { getAuth, signOut } from "firebase/auth";
 
 export default function Home() {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
 
+  const [menuModal, setMenuModal] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [changeModal, setChangeModal] = useState<boolean>(false);
+
+  const openMenuModal = () => {
+    setMenuModal(!menuModal);
+  };
 
   const openModal = () => {
     setModalOpen(!modalOpen);
@@ -40,6 +45,18 @@ export default function Home() {
 
   return (
     <>
+      {/* 로그인 창 */}
+      {modalOpen === true ? (
+        <Modal openModal={openModal} changeModalOpen={changeModalOpen} />
+      ) : null}
+
+      {/* 회원가입 창 */}
+      {changeModal === true ? (
+        <SignUp openModal={openModal} changeModalOpen={changeModalOpen} />
+      ) : null}
+
+      {/* 햄버거 메뉴 창 */}
+
       <header className={styled.header}>
         <ul>
           <div className={styled.button}>
@@ -48,7 +65,7 @@ export default function Home() {
           <li>BRAND</li>
           <li>NEWS</li>
           <li className={styled.logo}>
-            <Link to={"./brand"}>
+            <Link to={"/"}>
               <img
                 src="/image/lego-logo.png"
                 // width={120}
@@ -62,6 +79,7 @@ export default function Home() {
           <div className={styled.button}>
             <SearchOutlined className={styled.search} />
           </div>
+          {/* 로그인 영역 */}
           {userInfo ? (
             <div className={styled.logout}>
               <button onClick={handleLogout} className={styled.signin}>
@@ -82,21 +100,7 @@ export default function Home() {
               </div>
             </div>
           )}
-          {/* {modalOpen && <Modal openModal={openModal} />} */}
-          {modalOpen === true ? (
-            <Modal
-              // ModalFixed={ModalFixed}
-              openModal={openModal}
-              changeModalOpen={changeModalOpen}
-            />
-          ) : null}
-          {changeModal === true ? (
-            <SignUp
-              // ModalFixed={ModalFixed}
-              openModal={openModal}
-              changeModalOpen={changeModalOpen}
-            />
-          ) : null}
+          {/* 로그인 영역 */}
         </ul>
       </header>
 

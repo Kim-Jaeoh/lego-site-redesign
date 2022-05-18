@@ -14,7 +14,7 @@
 
 .modal {
   width: 504px;
-  height: 517px;
+  height: 600px;
   background: #fff;
   border-radius: 5px;
   position: absolute;
@@ -34,7 +34,6 @@
   width: 48px;
   height: 48px;
   font-size: 24px;
-  /* border: 1px solid blue; */
   position: absolute;
   right: 0px;
   top: 5px;
@@ -46,11 +45,13 @@
 
 .modal main {
   width: 428px;
-  height: 418px;
+  height: 500px;
+  padding: 20px 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* border: 1px solid red; */
 }
 
 .modal .modal_login_logo {
@@ -62,7 +63,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-bottom: 27px;
+  margin-bottom: 25px;
 }
 
 .modal .modal_login_logo img {
@@ -95,28 +96,39 @@
   border: 2px solid #fff;
   color: #333;
   transition: all 0.3s;
+  margin-bottom: 25px;
 }
 
 .modal form input:focus {
   border: 2px solid #c92e20;
   background: #fff;
 }
-
-.modal form input:first-of-type {
+.modal form .email,
+.modal form .password {
   margin-bottom: 30px;
+}
+
+.modal form .message {
+  font-size: 11px;
+  margin: -11px 0 0 4px;
+  user-select: none;
+}
+
+.modal form .message.success {
+  color: #6cc47f;
+}
+
+.modal form .message.error {
+  color: #ff6262;
 }
 
 .modal form .signin {
   width: 428px;
-  position: absolute;
   margin: 0 auto;
   text-align: center;
-  margin-top: 15px;
 }
 
-.modal form .signin button {
-  /* width: 98px; */
-  /* height: 37px; */
+.modal form .signin .button.active {
   padding: 7px 25px;
   background-color: #dc291a;
   border: 0;
@@ -125,6 +137,24 @@
   margin-bottom: 19px;
   transition: all 0.2s;
   position: relative;
+}
+
+.modal form .signin .button.disabled {
+  padding: 7px 25px;
+  background-color: #7a7a7a;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 19px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.modal form .signin {
+  width: 428px;
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 16px;
 }
 
 .modal form .signin button:hover {

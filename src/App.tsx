@@ -11,7 +11,7 @@ import { AuthContext } from "./context/authContext";
 console.log(auth);
 
 function App() {
-  const userInfo = useContext(AuthContext);
+  // const userInfo = useContext(AuthContext);
   // console.log(userInfo); // 로그인이 아닌경우 null
   return (
     <BrowserRouter>

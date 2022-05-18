@@ -15,7 +15,7 @@
 
 .modal {
   width: 504px;
-  height: 600px;
+  height: 700px;
   background: #fff;
   border-radius: 5px;
   position: absolute;
@@ -48,7 +48,7 @@
 .modal main {
   width: 428px;
   height: 600px;
-  padding: 40px 0;
+  padding: 20px 0;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -98,6 +98,7 @@
   border: 2px solid #fff;
   color: #333;
   transition: all 0.3s;
+  margin-bottom: 25px;
 }
 
 .modal form input:focus,
@@ -112,8 +113,9 @@
 }
 
 .modal form .message {
-  font-size: 12px;
-  margin: 10px 0 0 4px;
+  font-size: 11px;
+  margin: -11px 0 0 4px;
+  user-select: none;
 }
 
 .modal form .message.success {
@@ -128,10 +130,9 @@
   width: 428px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 15px;
 }
 
-.modal form .signin button {
+.modal form .signin .button.active {
   padding: 7px 25px;
   background-color: #dc291a;
   border: 0;
@@ -142,8 +143,14 @@
   position: relative;
 }
 
-.modal form .signin button:hover {
-  background-color: #8e1a10;
+.modal form .signin .button.disabled {
+  padding: 7px 25px;
+  background-color: #7a7a7a;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 19px;
+  transition: all 0.2s;
+  position: relative;
 }
 
 .modal form .signin button p {
