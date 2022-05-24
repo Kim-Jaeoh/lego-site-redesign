@@ -1,15 +1,15 @@
 import { MenuOutlined, SearchOutlined } from "@ant-design/icons";
-import { Swiper, SwiperSlide } from "swiper/react"; // basic
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/scss"; //basic
-import "swiper/css/navigation";
-import "swiper/scss/pagination";
-import "swiper/scss/autoplay";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+import "./swiper/swiper.scss";
+import "./swiper/navigation.scss";
+import "./swiper/pagination.scss";
 import styled from "./Home.module.css";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import Modal from "./LoginModal";
-import SignUp from "./SignUpModal";
+import MenuModal from "./modal/MenuModal";
+import LoginModal from "./modal/LoginModal";
+import SignUpModal from "./modal/SignUpModal";
 import { AuthContext } from "../context/authContext";
 import { getAuth, signOut } from "firebase/auth";
 
@@ -45,21 +45,22 @@ export default function Home() {
 
   return (
     <>
+      {/* 햄버거 메뉴 창 */}
+      {menuModal === true ? <MenuModal openMenuModal={openMenuModal} /> : null}
+
       {/* 로그인 창 */}
       {modalOpen === true ? (
-        <Modal openModal={openModal} changeModalOpen={changeModalOpen} />
+        <LoginModal openModal={openModal} changeModalOpen={changeModalOpen} />
       ) : null}
 
       {/* 회원가입 창 */}
       {changeModal === true ? (
-        <SignUp openModal={openModal} changeModalOpen={changeModalOpen} />
+        <SignUpModal openModal={openModal} changeModalOpen={changeModalOpen} />
       ) : null}
-
-      {/* 햄버거 메뉴 창 */}
 
       <header className={styled.header}>
         <ul>
-          <div className={styled.button}>
+          <div className={styled.button} onClick={openMenuModal}>
             <MenuOutlined className={styled.menubar} />
           </div>
           <li>BRAND</li>
@@ -108,21 +109,11 @@ export default function Home() {
       <section className={styled.slider}>
         <Swiper
           className={styled.slide}
-          spaceBetween={50}
           slidesPerView={1}
-          loop={true}
-          scrollbar={{ draggable: true }}
           navigation
           pagination={{ clickable: true }}
-          // autoplay={{
-          //   delay: 3000,
-          //   disableOnInteraction: false,
-          // }}
-          // breakpoints={{
-          //   768: {
-          //     slidesPerView: 7,
-          //   },
-          // }}
+          loop={true}
+          autoplay={{ delay: 6000 }}
         >
           <SwiperSlide>
             <img src="/image/slide1.png" alt="slide-1" />

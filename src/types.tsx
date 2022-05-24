@@ -1,5 +1,10 @@
 export interface ModalProps {
   openModal(): void;
   changeModalOpen(): void;
-  // ModalFixed: void;
+}
+
+export interface MenuModalProps {
+  openMenuModal(): void;
+  // openMenu: any;
+  // openMenu: () => void;
 }

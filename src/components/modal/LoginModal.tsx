@@ -1,9 +1,9 @@
 import { CloseOutlined } from "@ant-design/icons";
 import styled from "./LoginModal.module.css";
-import { ModalProps } from "../types";
-import useModalFixed from "../hooks/useModalFixed";
+import { ModalProps } from "../../types";
+import useModalFixed from "../../hooks/useModalFixed";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useCallback, useState } from "react";
 
 const Modal = ({ openModal, changeModalOpen }: ModalProps) => {

@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { CloseOutlined, EyeOutlined } from "@ant-design/icons";
 import styled from "./SignUpModal.module.css";
-import { ModalProps } from "../types";
-import useModalFixed from "../hooks/useModalFixed";
+import { ModalProps } from "../../types";
+import useModalFixed from "../../hooks/useModalFixed";
 
 const SignUp = ({ openModal, changeModalOpen }: ModalProps) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
