@@ -1,9 +1,9 @@
 import { MenuOutlined, SearchOutlined } from "@ant-design/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
-import "./swiper/swiper.scss";
-import "./swiper/navigation.scss";
-import "./swiper/pagination.scss";
+import "./swiperModules/swiper.scss";
+import "./swiperModules/navigation.scss";
+import "./swiperModules/pagination.scss";
 import styled from "./Home.module.css";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
