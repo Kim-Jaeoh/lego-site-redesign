@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useCallback, useState } from "react";
 
-const Modal = ({ openModal, changeModalOpen }: ModalProps) => {
+const Modal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
 
   // 이메일, 비밀번호, 비밀번호 확인
@@ -67,7 +67,7 @@ const Modal = ({ openModal, changeModalOpen }: ModalProps) => {
       await signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           alert("로그인 되었습니다.");
-          openModal(); // false, 로그인창 닫기
+          openLoginModal(); // false, 로그인창 닫기
         })
         .catch((e) => {
           alert(e);
@@ -80,7 +80,7 @@ const Modal = ({ openModal, changeModalOpen }: ModalProps) => {
       <section className={styled.modal_back}>
         <div className={styled.modal}>
           <header className={styled.redline}>
-            <CloseOutlined className={styled.close} onClick={openModal} />
+            <CloseOutlined className={styled.close} onClick={openLoginModal} />
           </header>
           <main>
             <div className={styled.modal_login_logo}>
@@ -139,8 +139,8 @@ const Modal = ({ openModal, changeModalOpen }: ModalProps) => {
                 <div className={styled.signin_text}>
                   <p
                     onClick={() => {
-                      openModal(); // false, 로그인창 닫기
-                      changeModalOpen(); // true, 가입창 열기
+                      openLoginModal(); // false, 로그인창 닫기
+                      changeLoginModalOpen(); // true, 가입창 열기
                     }}
                   >
                     회원 가입

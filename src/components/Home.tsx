@@ -17,19 +17,19 @@ export default function Home() {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
 
   const [menuModal, setMenuModal] = useState<boolean>(false);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [changeModal, setChangeModal] = useState<boolean>(false);
+  const [loginmodalOpen, setLoginModalOpen] = useState<boolean>(false);
+  const [changeLoginModal, setChangeLoginModal] = useState<boolean>(false);
 
   const openMenuModal = () => {
     setMenuModal(!menuModal);
   };
 
-  const openModal = () => {
-    setModalOpen(!modalOpen);
+  const openLoginModal = () => {
+    setLoginModalOpen(!loginmodalOpen);
   };
 
-  const changeModalOpen = () => {
-    setChangeModal(!changeModal);
+  const changeLoginModalOpen = () => {
+    setChangeLoginModal(!changeLoginModal);
   };
 
   const userInfo = useContext(AuthContext);
@@ -46,26 +46,27 @@ export default function Home() {
   return (
     <>
       {/* 햄버거 메뉴 창 */}
-      {menuModal === true ? <MenuModal openMenuModal={openMenuModal} /> : null}
+      {menuModal ? <MenuModal openMenuModal={openMenuModal} /> : null}
 
       {/* 로그인 창 */}
-      {modalOpen === true ? (
-        <LoginModal openModal={openModal} changeModalOpen={changeModalOpen} />
+      {loginmodalOpen ? (
+        <LoginModal
+          openLoginModal={openLoginModal}
+          changeLoginModalOpen={changeLoginModalOpen}
+        />
       ) : null}
 
       {/* 회원가입 창 */}
-      {changeModal === true ? (
-        <SignUpModal openModal={openModal} changeModalOpen={changeModalOpen} />
+      {changeLoginModal ? (
+        <SignUpModal
+          openLoginModal={openLoginModal}
+          changeLoginModalOpen={changeLoginModalOpen}
+        />
       ) : null}
 
       <header className={styled.header}>
-        <ul>
-          <div className={styled.button} onClick={openMenuModal}>
-            <MenuOutlined className={styled.menubar} />
-          </div>
-          <li>BRAND</li>
-          <li>NEWS</li>
-          <li className={styled.logo}>
+        <div className={styled.inner}>
+          <div className={styled.logo}>
             <Link to={"/"}>
               <img
                 src="/image/lego-logo.png"
@@ -74,35 +75,58 @@ export default function Home() {
                 className={styled.logo_img}
               />
             </Link>
-          </li>
-          <li>PRODUCT</li>
-          <li>EVENT</li>
-          <div className={styled.button}>
-            <SearchOutlined className={styled.search} />
           </div>
-          {/* 로그인 영역 */}
-          {userInfo ? (
-            <div className={styled.logout}>
-              <button onClick={handleLogout} className={styled.signin}>
-                <p>Log Out</p>
-              </button>
-              <div className={styled.userEmail}>
-                <p>{user!.email?.substring(0, user!.email.indexOf("@", 0))}</p>
-                {/* 이메일 @ 뒤에 삭제 */}
-              </div>
+          <nav className={styled.gnb}>
+            <div className={styled.gnb_left}>
+              <ul>
+                <div className={styled.button} onClick={openMenuModal}>
+                  <MenuOutlined className={styled.menubar} />
+                </div>
+                <li>
+                  <span>BRAND</span>
+                </li>
+                <li>
+                  <span>NEWS</span>
+                </li>
+              </ul>
             </div>
-          ) : (
-            <div onClick={openModal} className={styled.login}>
-              <button className={styled.signin}>
-                <p>Sign In</p>
-              </button>
-              <div className={styled.login_logo}>
-                <img src="image/login.png" alt="" />
-              </div>
+            <div className={styled.gnb_right}>
+              <ul>
+                <li>
+                  <span>PRODUCT</span>
+                </li>
+                <li>
+                  <span>EVENT</span>
+                </li>
+                <div className={styled.button}>
+                  <SearchOutlined className={styled.search} />
+                </div>
+              </ul>
             </div>
-          )}
-          {/* 로그인 영역 */}
-        </ul>
+          </nav>
+        </div>
+        {/* 로그인 영역 */}
+        {userInfo ? (
+          <div className={styled.logout}>
+            <button onClick={handleLogout} className={styled.signin}>
+              <p>Log Out</p>
+            </button>
+            <div className={styled.userEmail}>
+              <p>{user!.email?.substring(0, user!.email.indexOf("@", 0))}</p>
+              {/* 이메일 @ 뒤에 삭제 */}
+            </div>
+          </div>
+        ) : (
+          <div onClick={openLoginModal} className={styled.login}>
+            <button className={styled.signin}>
+              <p>Sign In</p>
+            </button>
+            {/* <div className={styled.login_logo}>
+              <img src="image/login.png" alt="" />
+            </div> */}
+          </div>
+        )}
+        {/* 로그인 영역 */}
       </header>
 
       {/* 배너 슬라이드 */}

@@ -6,7 +6,7 @@ import styled from "./SignUpModal.module.css";
 import { ModalProps } from "../../types";
 import useModalFixed from "../../hooks/useModalFixed";
 
-const SignUp = ({ openModal, changeModalOpen }: ModalProps) => {
+const SignUp = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
 
   // 이메일, 비밀번호, 비밀번호 확인
@@ -47,7 +47,7 @@ const SignUp = ({ openModal, changeModalOpen }: ModalProps) => {
   const onChangePassword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const passwordRegex =
-        /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+        /^(?=.*[a-zA-Z])(?=.*[!@#$%^*~+=-])(?=.*[0-9]).{8,25}$/;
       const passwordCurrent = e.target.value;
       setPassword(passwordCurrent);
 
@@ -96,8 +96,8 @@ const SignUp = ({ openModal, changeModalOpen }: ModalProps) => {
       await createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
           alert("회원가입 되었습니다.");
-          changeModalOpen(); // false, 가입창 닫기
-          openModal(); // true, 로그인창 열기
+          changeLoginModalOpen(); // false, 가입창 닫기
+          openLoginModal(); // true, 로그인창 열기
         })
         .catch((e) => {
           alert(e);
@@ -110,7 +110,10 @@ const SignUp = ({ openModal, changeModalOpen }: ModalProps) => {
       <section className={styled.modal_back}>
         <div className={styled.modal}>
           <header className={styled.redline}>
-            <CloseOutlined className={styled.close} onClick={changeModalOpen} />
+            <CloseOutlined
+              className={styled.close}
+              onClick={changeLoginModalOpen}
+            />
           </header>
           <main>
             <div className={styled.modal_login_logo}>
@@ -187,8 +190,8 @@ const SignUp = ({ openModal, changeModalOpen }: ModalProps) => {
                 <div className={styled.signin_text}>
                   <p
                     onClick={() => {
-                      openModal(); // true, 로그인창 열기
-                      changeModalOpen(); // false, 가입창 닫기
+                      openLoginModal(); // true, 로그인창 열기
+                      changeLoginModalOpen(); // false, 가입창 닫기
                     }}
                   >
                     로그인
