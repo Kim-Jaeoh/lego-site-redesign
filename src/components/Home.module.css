@@ -9,6 +9,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* COMMON */
 body {
   color: #333;
@@ -135,9 +141,10 @@ body {
 }
 
 .header ul .button {
-  /* border: 1px solid red; */
-  padding: 0 48px;
+  padding: 0 50px;
   font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .header ul {
@@ -283,17 +290,20 @@ body {
   /* width: 100%; */
   /* height: 715px; */
   /* overflow: hidden; */
+  /* border: 1px solid red; */
   margin-top: 85px;
 }
 
 section.slider .slide {
-  width: 100vw;
+  width: 100%;
 }
 
 section.slider .slide img {
   /* background-repeat: no-repeat; */
   /* background-size: contain; */
-  width: 100vw;
+  width: 100%;
+  /* height: 715px; */
+  display: block;
   /* height: 584px; */
 }
 
@@ -444,7 +454,7 @@ section.popular .inner .popular_list .popular_card_main .popular_detail {
   width: 100%;
   height: 100px;
   background: #fff;
-  padding-left: 40px;
+  padding-left: 30px;
   display: flex;
   /* justify-content: center; */
   align-items: center;

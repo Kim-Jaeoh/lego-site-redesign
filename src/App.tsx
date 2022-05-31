@@ -20,6 +20,7 @@ function App() {
         <Route path="/brand" element={<Brand />} />
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<NotFound />} />
+        {/* <Route path="/asd" element={<Asd />} /> */}
       </Routes>
     </BrowserRouter>
   );

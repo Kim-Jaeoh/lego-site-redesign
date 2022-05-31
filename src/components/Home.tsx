@@ -6,12 +6,13 @@ import "./swiperModules/navigation.scss";
 import "./swiperModules/pagination.scss";
 import styled from "./Home.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import MenuModal from "./modal/MenuModal";
 import LoginModal from "./modal/LoginModal";
 import SignUpModal from "./modal/SignUpModal";
 import { AuthContext } from "../context/authContext";
 import { getAuth, signOut } from "firebase/auth";
+import SearchModal from "./modal/SearchModal";
 
 export default function Home() {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -19,18 +20,23 @@ export default function Home() {
   const [menuModal, setMenuModal] = useState<boolean>(false);
   const [loginmodalOpen, setLoginModalOpen] = useState<boolean>(false);
   const [changeLoginModal, setChangeLoginModal] = useState<boolean>(false);
+  const [searchModal, setSearchModal] = useState<boolean>(false);
 
-  const openMenuModal = () => {
+  const openMenuModal = useCallback(() => {
     setMenuModal(!menuModal);
-  };
+  }, [menuModal]);
 
-  const openLoginModal = () => {
+  const openLoginModal = useCallback(() => {
     setLoginModalOpen(!loginmodalOpen);
-  };
+  }, [loginmodalOpen]);
 
-  const changeLoginModalOpen = () => {
+  const changeLoginModalOpen = useCallback(() => {
     setChangeLoginModal(!changeLoginModal);
-  };
+  }, [changeLoginModal]);
+
+  const openSearchModal = useCallback(() => {
+    setSearchModal(!searchModal);
+  }, [searchModal]);
 
   const userInfo = useContext(AuthContext);
   const auth = getAuth();
@@ -61,6 +67,14 @@ export default function Home() {
         <SignUpModal
           openLoginModal={openLoginModal}
           changeLoginModalOpen={changeLoginModalOpen}
+        />
+      ) : null}
+
+      {/* 검색 창 */}
+      {searchModal ? (
+        <SearchModal
+          searchModal={searchModal}
+          openSearchModal={openSearchModal}
         />
       ) : null}
 
@@ -98,7 +112,7 @@ export default function Home() {
                 <li>
                   <span>EVENT</span>
                 </li>
-                <div className={styled.button}>
+                <div className={styled.button} onClick={openSearchModal}>
                   <SearchOutlined className={styled.search} />
                 </div>
               </ul>
@@ -128,7 +142,6 @@ export default function Home() {
         )}
         {/* 로그인 영역 */}
       </header>
-
       {/* 배너 슬라이드 */}
       <section className={styled.slider}>
         <Swiper
@@ -145,10 +158,15 @@ export default function Home() {
           <SwiperSlide>
             <img src="/image/slide2.png" alt="slide-2" />
           </SwiperSlide>
+          <SwiperSlide>
+            <img src="/image/slide3.png" alt="slide-3" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="/image/slide4.png" alt="slide-4" />
+          </SwiperSlide>
         </Swiper>
       </section>
       {/* 배너 슬라이드 */}
-
       {/* 추천 제품 */}
       <section className={styled.recommend}>
         <div className={styled.inner}>
@@ -205,7 +223,6 @@ export default function Home() {
         </div>
       </section>
       {/* 추천 제품 */}
-
       {/* 인기 제품 */}
       <section className={styled.popular}>
         <div className={styled.inner}>
@@ -270,7 +287,6 @@ export default function Home() {
         </div>
       </section>
       {/* 인기 제품 */}
-
       {/* 신제품 */}
       <section className={styled.new_product}>
         <div className={styled.inner}>
@@ -304,7 +320,6 @@ export default function Home() {
         </div>
       </section>
       {/* 신제품 */}
-
       {/* 시리즈별 */}
       <section className={styled.series_product}>
         <div className={styled.inner}>
@@ -384,7 +399,6 @@ export default function Home() {
         </div>
       </section>
       {/* 시리즈별 */}
-
       {/* 푸터 */}
       <footer>
         <div className={styled.inner}>

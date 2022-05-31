@@ -27,7 +27,7 @@ body {
 
 .modal {
   z-index: 60;
-  width: 434px;
+  width: 380px;
   height: 100%;
   background: #fff;
   position: absolute;
@@ -46,8 +46,8 @@ body {
 }
 
 .modal_title .banner {
-  width: 434px;
-  height: 236px;
+  width: 380px;
+  /* height: 236px; */
   /* box-sizing: border-box; */
 }
 
@@ -111,12 +111,13 @@ body {
   cursor: pointer;
 }
 
-.menu_list li:after {
+.menu_list li:nth-child(1):after,
+.menu_list li:nth-child(2):after {
   font-family: "xeicon";
-  font-size: 26px;
+  font-size: 24px;
   content: "";
-  width: 48px;
-  height: 48px;
+  width: 24px;
+  height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,13 +154,13 @@ body {
 
 section .menu_list_expand_box {
   z-index: -10;
-  width: 434px;
+  width: 430px;
   height: 100%;
   background: #fff;
   position: absolute;
   top: 0;
-  left: 434px;
-  bottom: 0;
+  left: 380px;
+  /* bottom: 0; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,24 +182,28 @@ section .close_expand {
 }
 
 section .menu_list_expand {
-  width: 334px;
-  height: 800px;
+  width: 320px;
+  height: 780px;
+  /* border: 1px solid red; */
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 section .menu_list_expand li {
   font-size: 14px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
-  width: 130px;
-  height: 30px;
+  white-space: nowrap;
+  width: 120px;
+  height: 20px;
   cursor: pointer;
+  /* border: 1px solid green; */
+  margin-bottom: 20px;
 }
 
-section .menu_list_expand li span:hover {
+section .menu_list_expand li:hover {
   color: #dc291a;
 }
 /* .SECTION */

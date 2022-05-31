@@ -85,7 +85,7 @@ const SignUp = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
         setIsPasswordConfirm(false);
       }
     },
-    [password]
+    [password, passwordConfirm]
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
