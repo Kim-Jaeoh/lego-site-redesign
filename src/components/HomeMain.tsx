@@ -4,7 +4,7 @@ import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import "./swiperModules/swiper.scss";
 import "./swiperModules/navigation.scss";
 import "./swiperModules/pagination.scss";
-import styled from "./Home.module.css";
+import styled from "./HomeMain.module.css";
 import { Link } from "react-router-dom";
 import { useCallback, useContext, useState } from "react";
 import MenuModal from "./modal/MenuModal";
@@ -14,7 +14,7 @@ import { AuthContext } from "../context/authContext";
 import { getAuth, signOut } from "firebase/auth";
 import SearchModal from "./modal/SearchModal";
 
-export default function Home() {
+export default function HomeMain() {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
 
   const [menuModal, setMenuModal] = useState<boolean>(false);
@@ -121,23 +121,22 @@ export default function Home() {
         </div>
         {/* 로그인 영역 */}
         {userInfo ? (
-          <div className={styled.logout}>
-            <button onClick={handleLogout} className={styled.signin}>
-              <p>Log Out</p>
+          <div className={styled.auth_box}>
+            <button onClick={handleLogout} className={styled.auth_btn}>
+              <div className={styled.logo_chacracter}>
+                <img src="image/login-active.png" alt="" />
+              </div>
+              <p className={styled.auth_text}>Log Out</p>
             </button>
-            <div className={styled.userEmail}>
-              <p>{user!.email?.substring(0, user!.email.indexOf("@", 0))}</p>
-              {/* 이메일 @ 뒤에 삭제 */}
-            </div>
           </div>
         ) : (
-          <div onClick={openLoginModal} className={styled.login}>
-            <button className={styled.signin}>
-              <p>Sign In</p>
+          <div className={styled.auth_box}>
+            <button onClick={openLoginModal} className={styled.auth_btn}>
+              <div className={`${styled.logo_chacracter} ${styled.active}`}>
+                <img src="image/login.png" alt="" />
+              </div>
+              <p className={styled.auth_text}>Sign In</p>
             </button>
-            {/* <div className={styled.login_logo}>
-              <img src="image/login.png" alt="" />
-            </div> */}
           </div>
         )}
         {/* 로그인 영역 */}

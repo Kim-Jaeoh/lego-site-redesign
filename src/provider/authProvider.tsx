@@ -5,10 +5,8 @@ import { auth } from "../firebase";
 
 const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<User | null>(null);
-
   useEffect(() => {
     const subscribe = auth.onAuthStateChanged((fbUser) => {
-      console.log(`구독 실행`, fbUser);
       setUser(fbUser);
     });
     return subscribe;

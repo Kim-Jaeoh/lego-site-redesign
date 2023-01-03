@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useCallback, useState } from "react";
 
-const Modal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
+const LoginModal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
 
   // 이메일, 비밀번호, 비밀번호 확인
@@ -25,6 +25,7 @@ const Modal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
 
   const onChangeEmail = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
+      // @와 .이 들어갔는지, 그리고 .뒤에 영어가 2자리 이상인지 체크
       const emailRegex =
         /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
       const emailCurrent = e.target.value;
@@ -76,86 +77,84 @@ const Modal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
   };
 
   return (
-    <>
-      <section className={styled.modal_back}>
-        <div className={styled.modal}>
-          <header className={styled.redline}>
-            <CloseOutlined className={styled.close} onClick={openLoginModal} />
-          </header>
-          <main>
-            <div className={styled.modal_login_logo}>
-              <img src="./image/modal-login-logo.png" alt="" />
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className={styled.email}>
-                <label htmlFor="email">이메일</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={onChangeEmail}
-                  required
-                />
-                {email.length > 0 && (
-                  <p
-                    className={`${styled.message} ${
-                      isEmail ? styled.success : styled.error
-                    }`}
-                  >
-                    {emailMessage}
-                  </p>
-                )}
-              </div>
-              <div className={styled.password}>
-                <label htmlFor="password">비밀번호</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={onChangePassword}
-                  minLength={8}
-                  required
-                />
-                {password.length > 0 && (
-                  <p
-                    className={`${styled.message} ${
-                      isPassword ? styled.success : styled.error
-                    }`}
-                  >
-                    {passwordMessage}
-                  </p>
-                )}
-              </div>
-              <div className={styled.signin}>
-                <button
-                  className={`${styled.button} ${
-                    checkForm ? styled.active : styled.disabled
+    <section className={styled.modal_back}>
+      <div className={styled.modal}>
+        <header className={styled.redline}>
+          <CloseOutlined className={styled.close} onClick={openLoginModal} />
+        </header>
+        <main>
+          <div className={styled.modal_login_logo}>
+            <img src="./image/modal-login-logo.png" alt="" />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className={styled.email}>
+              <label htmlFor="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={onChangeEmail}
+                required
+              />
+              {email.length > 0 && (
+                <p
+                  className={`${styled.message} ${
+                    isEmail ? styled.success : styled.error
                   }`}
-                  type="submit"
-                  disabled={!checkForm}
                 >
-                  <p>로그인</p>
-                </button>
-                <div className={styled.signin_text}>
-                  <p
-                    onClick={() => {
-                      openLoginModal(); // false, 로그인창 닫기
-                      changeLoginModalOpen(); // true, 가입창 열기
-                    }}
-                  >
-                    회원 가입
-                  </p>
-                  <p>사용자 이메일을 잊었나요?</p>
-                  <p>비밀번호를 잊었나요?</p>
-                </div>
+                  {emailMessage}
+                </p>
+              )}
+            </div>
+            <div className={styled.password}>
+              <label htmlFor="password">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={onChangePassword}
+                minLength={8}
+                required
+              />
+              {password.length > 0 && (
+                <p
+                  className={`${styled.message} ${
+                    isPassword ? styled.success : styled.error
+                  }`}
+                >
+                  {passwordMessage}
+                </p>
+              )}
+            </div>
+            <div className={styled.signin}>
+              <button
+                className={`${styled.button} ${
+                  checkForm ? styled.active : styled.disabled
+                }`}
+                type="submit"
+                disabled={!checkForm}
+              >
+                <p>로그인</p>
+              </button>
+              <div className={styled.signin_text}>
+                <p
+                  onClick={() => {
+                    openLoginModal(); // false, 로그인창 닫기
+                    changeLoginModalOpen(); // true, 가입창 열기
+                  }}
+                >
+                  회원 가입
+                </p>
+                <p>사용자 이메일을 잊었나요?</p>
+                <p>비밀번호를 잊었나요?</p>
               </div>
-            </form>
-          </main>
-          <footer className={styled.redline} />
-        </div>
-      </section>
-    </>
+            </div>
+          </form>
+        </main>
+        <footer className={styled.redline} />
+      </div>
+    </section>
   );
 };
 
-export default Modal;
+export default LoginModal;

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { MenuClickProps, MenuListModalProps } from "../../types";
 import { series, interest, 테스트 } from "./menuListData";
 
-export const ListSeries = ({ openListExpand }: MenuListModalProps) => {
+const ListSeries = ({ openListExpand }: MenuListModalProps) => {
   const [seriesModalVisible, setSeriesmodalVisible] = useState<boolean>(true);
   const seriesVisible = () => {
     setSeriesmodalVisible(!seriesModalVisible);
@@ -42,7 +42,7 @@ export const ListSeries = ({ openListExpand }: MenuListModalProps) => {
   );
 };
 
-export const ListInterest = ({ openListExpand }: MenuListModalProps) => {
+const ListInterest = ({ openListExpand }: MenuListModalProps) => {
   const [seriesModalVisible, setSeriesmodalVisible] = useState<boolean>(true);
   const seriesVisible = () => {
     setSeriesmodalVisible(!seriesModalVisible);
@@ -79,7 +79,7 @@ export const ListInterest = ({ openListExpand }: MenuListModalProps) => {
   );
 };
 
-export const TestMan = ({ openListExpand }: MenuListModalProps) => {
+const TestMan = ({ openListExpand }: MenuListModalProps) => {
   const [seriesModalVisible, setSeriesmodalVisible] = useState<boolean>(true);
   const seriesVisible = () => {
     setSeriesmodalVisible(!seriesModalVisible);

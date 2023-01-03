@@ -9,22 +9,25 @@ import { TabContent } from "./ListSeries";
 const MenuModal = ({ openMenuModal }: MenuModalProps) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
 
+  useEffect(() => {}, []);
+
   const [menuModal, setMenuModal] = useState<boolean>(true);
+  const [expandModal, setExpandModal] = useState<boolean>(false);
+  const [expandModal2, setExpandModal2] = useState<boolean>(false);
+
   const openMenu = () => {
     setMenuModal(!menuModal);
   };
 
-  const [expandModal, setExpandModal] = useState<boolean>(false);
   const openListExpand = useCallback(() => {
-    setExpandModal(!expandModal); // 해당 메뉴 on/off
+    setExpandModal((prev) => !prev); // 해당 메뉴 on/off
     setExpandModal2(false); // 다른 메뉴 닫기
-  }, [expandModal]);
+  }, []);
 
-  const [expandModal2, setExpandModal2] = useState<boolean>(false);
   const openListExpand2 = useCallback(() => {
-    setExpandModal2(!expandModal2); // 해당 메뉴 on/off
+    setExpandModal2((prev) => !prev); // 해당 메뉴 on/off
     setExpandModal(false); // 다른 메뉴 닫기
-  }, [expandModal2]);
+  }, []);
 
   let [clickTab, setClickTab] = useState<number>();
 
