@@ -1,0 +1,85 @@
+section .recommend {
+  width: 100%;
+  height: 100%;
+}
+
+section.recommend .inner {
+  position: relative;
+  height: 650px;
+  margin-top: 78px;
+}
+
+section.recommend .inner .recommend_list {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+section.recommend .inner .recommend_card {
+  width: 267px;
+  height: 394px;
+  margin: 0 12px;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.04);
+  border: 0.5px solid #e6e6e6;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+section.recommend .inner .recommend_card:nth-child(even) {
+  margin-top: 60px;
+}
+
+section.recommend .inner .recommend_card:hover {
+}
+
+section.recommend .inner .recommend_card .product_image {
+  background-image: url("/public/image/product_bg.png");
+  background-color: #fff;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 294px;
+  overflow: hidden;
+}
+
+section.recommend .inner .recommend_card .product_image img {
+  transition: all 0.5s ease;
+  padding: 15px 0;
+  width: 100%;
+}
+
+section.recommend .inner .recommend_card:hover .product_image img {
+  filter: brightness(125%);
+  transform: scale(1.06);
+}
+
+section.recommend .inner .recommend_card .product_detail {
+  padding: 25px;
+  background: #fff;
+}
+
+section.recommend .inner .recommend_card .product_detail .product_price {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+section.recommend .side_obj_1 {
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 550px;
+  left: 120px;
+  width: 267px;
+  height: 267px;
+  transform: rotate(-4deg);
+  transition: all 0.2s;
+}
+
+section.recommend .side_obj_1:hover {
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 600px;
+  left: 180px;
+  transform: scale(1.3) rotate(-11deg);
+}

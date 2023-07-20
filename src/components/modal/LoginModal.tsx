@@ -1,12 +1,20 @@
 import { CloseOutlined } from "@ant-design/icons";
 import styled from "./LoginModal.module.css";
-import { ModalProps } from "../../types";
+import { ModalProps } from "../../type/types";
 import useModalFixed from "../../hooks/useModalFixed";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useCallback, useState } from "react";
 
-const LoginModal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
+type Props<T> = {
+  onLoginModal: T;
+  onChangeLoginModal: T;
+};
+
+const LoginModal = ({
+  onLoginModal,
+  onChangeLoginModal,
+}: Props<() => void>) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
 
   // 이메일, 비밀번호, 비밀번호 확인
@@ -68,7 +76,7 @@ const LoginModal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
       await signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           alert("로그인 되었습니다.");
-          openLoginModal(); // false, 로그인창 닫기
+          onLoginModal(); // false, 로그인창 닫기
         })
         .catch((e) => {
           alert(e);
@@ -80,7 +88,7 @@ const LoginModal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
     <section className={styled.modal_back}>
       <div className={styled.modal}>
         <header className={styled.redline}>
-          <CloseOutlined className={styled.close} onClick={openLoginModal} />
+          <CloseOutlined className={styled.close} onClick={onLoginModal} />
         </header>
         <main>
           <div className={styled.modal_login_logo}>
@@ -139,8 +147,8 @@ const LoginModal = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
               <div className={styled.signin_text}>
                 <p
                   onClick={() => {
-                    openLoginModal(); // false, 로그인창 닫기
-                    changeLoginModalOpen(); // true, 가입창 열기
+                    // onLoginModal(); // false, 로그인창 닫기
+                    onChangeLoginModal(); // true, 가입창 열기
                   }}
                 >
                   회원 가입

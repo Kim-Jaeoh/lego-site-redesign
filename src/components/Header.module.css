@@ -1,0 +1,147 @@
+/* HEADER */
+.header {
+  width: 100%;
+  height: 85px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #fff;
+  border-bottom: 0.5px solid rgb(223, 223, 223);
+}
+
+.header > .inner {
+  max-width: 1200px;
+  height: 100%;
+  flex: 1;
+  margin: 0 auto;
+}
+
+.header .gnb {
+  display: flex;
+  height: 85px;
+  align-items: center;
+}
+
+.header .gnb .gnb_left {
+  text-align: left;
+  flex: 1;
+}
+
+.header .gnb .gnb_right {
+  text-align: right;
+  flex: 1;
+}
+
+.header ul .button {
+  padding: 0 40px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.header ul {
+  display: inline-flex;
+  align-items: center;
+  line-height: 85px;
+}
+
+.header ul li {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 40px;
+}
+
+.header ul li span {
+  vertical-align: middle;
+}
+
+.header ul li:hover,
+.header ul .button:hover {
+  color: #cb2f1e;
+  cursor: pointer;
+}
+
+.header .logo {
+  width: 237px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header .logo_img {
+  width: 120px;
+  margin: 0 auto;
+  display: block;
+  height: 100%;
+}
+
+.header .signin {
+  box-sizing: border-box;
+  border-style: none;
+  background: none;
+}
+
+.header .logo_chacracter {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .auth_box {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+.header .auth_btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.header .auth_btn .logo_chacracter {
+  background-color: #333;
+}
+
+.header .auth_btn .logo_chacracter.active {
+  background-color: #fff;
+}
+
+.header .auth_btn:hover .logo_chacracter.active {
+  background-color: #333;
+}
+
+.header .auth_btn:hover .logo_chacracter.active img {
+  content: "";
+  display: block;
+  background-image: url("/public/image/login-active.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 20;
+}
+
+.header .auth_btn:hover p {
+  color: #333;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.header .auth_text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 2px;
+}

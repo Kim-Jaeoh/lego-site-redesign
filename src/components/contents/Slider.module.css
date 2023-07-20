@@ -1,0 +1,11 @@
+.slider {
+}
+
+section.slider .slide {
+  width: 100%;
+}
+
+section.slider .slide img {
+  width: 100%;
+  display: block;
+}

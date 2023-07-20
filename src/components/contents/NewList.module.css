@@ -1,0 +1,120 @@
+/* new */
+section.new_product {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background-image: url("/public/image/grunge_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+section.new_product .inner {
+  position: relative;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+
+section.new_product .inner .new_product_video {
+  width: 700px;
+  border: 4px double rgba(255, 255, 255, 0.199);
+}
+
+section.new_product .inner .new_product_video video {
+  width: 100%;
+  height: 100%;
+}
+
+section.new_product .inner .new_product_detail {
+  width: 363px;
+  margin-bottom: 250px;
+}
+
+section.new_product .inner .new_product_detail div:nth-of-type(1) {
+  position: absolute;
+  color: #fff;
+  padding-left: 0;
+}
+
+section.new_product .inner .new_product_detail div:nth-of-type(1) button {
+  margin-left: 160px;
+}
+
+section.new_product .inner .new_product_detail div:nth-of-type(1) p:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  height: 1px;
+  width: 345px;
+  background: #ff9b44d2;
+  /* opacity: 0.8; */
+}
+
+section.new_product .inner .new_product_detail .new_product_detail_text {
+  color: #fff;
+  width: 100%;
+  margin-top: 70px;
+}
+
+section.new_product .inner .new_product_detail .new_product_detail_text p {
+  line-height: 1.4;
+}
+
+section.new_product
+  .new_product_detail
+  .new_product_detail_text
+  p:first-of-type {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+section.new_product .inner .new_product_detail .new_product_image {
+  position: absolute;
+  margin-top: 27px;
+}
+
+section.new_product
+  .inner
+  .new_product_detail
+  .new_product_image
+  img:first-of-type {
+  width: 160px;
+  filter: grayscale(100%);
+}
+
+section.new_product
+  .inner
+  .new_product_detail
+  .new_product_image
+  img:first-of-type:hover {
+  filter: grayscale(0);
+}
+
+section.new_product
+  .inner
+  .new_product_detail
+  .new_product_image
+  img:last-of-type {
+  position: absolute;
+  top: 50px;
+  left: 65px;
+  width: 270px;
+  filter: grayscale(100%);
+}
+
+section.new_product
+  .inner
+  .new_product_detail
+  .new_product_image
+  img:last-of-type:hover {
+  filter: grayscale(0);
+}
+
+/* new */

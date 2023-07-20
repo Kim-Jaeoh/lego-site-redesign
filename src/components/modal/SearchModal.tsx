@@ -1,24 +1,25 @@
-import { Link } from "react-router-dom";
-import { SearchOutlined, CloseOutlined, MenuOutlined } from "@ant-design/icons";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
+import { useEffect, useRef, useState } from "react";
 import styled from "./SearchModal.module.css";
 
 interface SearchModalProps {
   searchModal: boolean;
-  openSearchModal(): void;
+  onSearchModal: () => void;
 }
 
-const SearchModal = ({ searchModal, openSearchModal }: SearchModalProps) => {
-  const [isOpen, setIsOpen] = useState(true);
-  const onClose = () => {
-    setIsOpen(!isOpen);
-  };
+const SearchModal = ({ searchModal, onSearchModal }: SearchModalProps) => {
+  const [isOpen, setIsOpen] = useState(searchModal);
 
-  const visible = useCallback(() => {
-    setTimeout(() => {
-      openSearchModal();
-    }, 400);
-  }, [openSearchModal]);
+  const modalRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => window.clearTimeout(modalRef.current as number);
+  }, []);
+
+  const onCloseModal = () => {
+    setIsOpen((prev) => !prev);
+    modalRef.current = window.setTimeout(() => onSearchModal(), 400);
+  };
 
   return (
     <header className={`${styled.header} ${isOpen ? styled.on : styled.off}`}>
@@ -32,17 +33,7 @@ const SearchModal = ({ searchModal, openSearchModal }: SearchModalProps) => {
           </div>
           <div className={styled.gnb_right}>
             <div className={styled.button}>
-              <CloseOutlined
-                className={styled.close}
-                onClick={() => {
-                  onClose();
-                  visible();
-                  // setTimeout(() => {
-                  //   openSearchModal();
-                  //   console.log("?");
-                  // }, 400);
-                }}
-              />
+              <CloseOutlined className={styled.close} onClick={onCloseModal} />
             </div>
           </div>
         </nav>

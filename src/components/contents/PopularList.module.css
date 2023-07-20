@@ -1,0 +1,119 @@
+/* popular */
+section.popular {
+  width: 100%;
+  height: 900px;
+  background-image: url("/public/image/popular_bg.png");
+  clip-path: polygon(0 0, 100% 12%, 100% 100%, 0% 100%);
+  position: relative;
+}
+
+section.popular .inner {
+  padding-top: 125px;
+}
+
+section.popular .inner > div:nth-child(1) p {
+  color: #fff;
+}
+
+section.popular .inner .popular_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+section.popular .inner .popular_list .popular_card_main,
+section.popular .inner .popular_list .popular_card_sub > div {
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+section.popular .inner .popular_list .popular_card_main {
+  width: 655px;
+  height: 556px;
+  margin-right: 20px;
+}
+
+section.popular .inner .popular_list .popular_card_main:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+section.popular .inner .popular_list .popular_card_main_image {
+  width: 100%;
+  height: 455px;
+  /* border: 1px solid red; */
+}
+
+section.popular .inner .popular_list .popular_card_main .popular_detail {
+  width: 100%;
+  height: 100px;
+  background: #fff;
+  padding-left: 30px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* padding: 25px 18px; */
+}
+
+section.popular
+  .inner
+  .popular_list
+  .popular_card_main
+  .popular_detail
+  p:first-of-type {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+section.popular .inner .popular_list .popular_card_sub > div {
+  position: relative;
+  width: 461px;
+  height: 268px;
+}
+
+section.popular .inner .popular_list .popular_card_sub > div:first-of-type {
+  margin-bottom: 20px;
+}
+
+section.popular .inner .popular_list .popular_detail_dim {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: linear-gradient(
+    -180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+section.popular
+  .inner
+  .popular_list
+  .popular_detail_dim
+  .popular_detail_dim_text {
+  position: absolute;
+  padding: 15px;
+  bottom: 0;
+  left: 0;
+  font-size: 13px;
+}
+
+section.popular .inner .popular_list .popular_detail_dim p:first-of-type {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+section.popular .inner .popular_list .popular_detail_dim:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+/* popular */

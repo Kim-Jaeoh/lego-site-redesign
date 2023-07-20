@@ -1,12 +1,16 @@
 import { useCallback, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
-import { CloseOutlined, EyeOutlined } from "@ant-design/icons";
+import { CloseOutlined } from "@ant-design/icons";
 import styled from "./SignUpModal.module.css";
-import { ModalProps } from "../../types";
 import useModalFixed from "../../hooks/useModalFixed";
 
-const SignUp = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
+type Props<T> = {
+  onLoginModal: T;
+  onChangeLoginModal: T;
+};
+
+const SignUp = ({ onLoginModal, onChangeLoginModal }: Props<() => void>) => {
   const ModalFixed = useModalFixed(); // 모달창 픽스
 
   // 이메일, 비밀번호, 비밀번호 확인
@@ -97,8 +101,7 @@ const SignUp = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
       await createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
           alert("회원가입 되었습니다.");
-          changeLoginModalOpen(); // false, 가입창 닫기
-          openLoginModal(); // true, 로그인창 열기
+          onChangeLoginModal(); // false, 가입창 닫기
         })
         .catch((e) => {
           alert(e);
@@ -106,14 +109,16 @@ const SignUp = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
     }
   };
 
+  const onClose = () => {
+    onChangeLoginModal();
+    onLoginModal();
+  };
+
   return (
     <section className={styled.modal_back}>
       <div className={styled.modal}>
         <header className={styled.redline}>
-          <CloseOutlined
-            className={styled.close}
-            onClick={changeLoginModalOpen}
-          />
+          <CloseOutlined className={styled.close} onClick={onClose} />
         </header>
         <main>
           <div className={styled.modal_login_logo}>
@@ -190,8 +195,8 @@ const SignUp = ({ openLoginModal, changeLoginModalOpen }: ModalProps) => {
               <div className={styled.signin_text}>
                 <p
                   onClick={() => {
-                    openLoginModal(); // true, 로그인창 열기
-                    changeLoginModalOpen(); // false, 가입창 닫기
+                    // onLoginModal(); // true, 로그인창 열기
+                    onChangeLoginModal(); // false, 가입창 닫기
                   }}
                 >
                   로그인
